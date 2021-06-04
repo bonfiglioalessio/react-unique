@@ -1,40 +1,48 @@
 import React from 'react';
 import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import {
   ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
   theme,
 } from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import "./style/app.css";
+import { ColorModeSwitcher } from './components/ColorModeSwitcher';
+import {HomePage} from './pages/HomePage';
+import {AboutPage} from './pages/AboutPage';
+import {BlogPage} from './pages/BlogPage';
+import {ContactPage} from './pages/ContactPage';
+import {ErrorPage} from './pages/ErrorPage';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
 function App() {
   return (
     <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
+    <Router>
+      <Header/>
+      <ColorModeSwitcher />
+      <Switch>
+        <Route exact path="/">
+          <HomePage/>
+        </Route>
+        <Route path="/about">
+          <AboutPage/>
+        </Route>
+        <Route path="/blog">
+          <BlogPage/>
+        </Route>
+        <Route path="/contatti">
+          <ContactPage/>
+        </Route>
+        <Route path="">
+          <ErrorPage/>
+        </Route>
+      </Switch>
+      <Footer/>
+    </Router>
     </ChakraProvider>
   );
 }
