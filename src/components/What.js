@@ -34,9 +34,7 @@ const What = () => {
               </Heading>
               <Text fontSize={'xl'} color={useColorModeValue('gray.600', 'gray.300')}>
                 The NewLife™ technology allows you to monitor your crops and get
-                complete insights at real time. The proprietary
-                software/hardware ecosystem prevents your plants from getting
-                neglected.
+                complete insights at real time.
               </Text>
             </Box>
 
